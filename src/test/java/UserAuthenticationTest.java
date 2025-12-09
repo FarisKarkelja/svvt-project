@@ -21,27 +21,17 @@ public class UserAuthenticationTest {
         baseUrl = "https://olx.ba/";
     }
 
-    @Test
-    public void handleCookies() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        try {
-            WebElement disagree = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.id("disagree-btn"))
-            );
-            disagree.click();
-        } catch (Exception e) {
-            System.out.println("Cookie popup not found or already closed");
-        }
-    }
-
-    @Test
-    public void createNewUser() throws InterruptedException {
+    @BeforeEach
+    public void beforeEachTest() throws InterruptedException {
         driver.get(baseUrl);
         driver.manage().window().maximize();
 
         driver.findElement(By.xpath("//button[@id='disagree-btn']/span")).click();
         Thread.sleep(1000);
+    }
 
+    @Test
+    public void createNewUser() throws InterruptedException {
         driver.findElement(By.linkText("Registracija")).click();
         Thread.sleep(1000);
 
@@ -125,12 +115,6 @@ public class UserAuthenticationTest {
 
     @Test
     public void testAlreadyExistingMail() throws InterruptedException {
-        driver.get(baseUrl);
-        driver.manage().window().maximize();
-
-        driver.findElement(By.xpath("//button[@id='disagree-btn']/span")).click();
-        Thread.sleep(1000);
-
         driver.findElement(By.linkText("Registracija")).click();
         Thread.sleep(1000);
 
@@ -218,12 +202,6 @@ public class UserAuthenticationTest {
 
     @Test
     public void testNotAcceptingCheckbox() throws InterruptedException {
-        driver.get(baseUrl);
-        driver.manage().window().maximize();
-
-        driver.findElement(By.xpath("//button[@id='disagree-btn']/span")).click();
-        Thread.sleep(1000);
-
         driver.findElement(By.linkText("Registracija")).click();
         Thread.sleep(1000);
 
@@ -301,12 +279,6 @@ public class UserAuthenticationTest {
 
     @Test
     public void testLoginWithValidCredentials() throws InterruptedException {
-        driver.get(baseUrl);
-        driver.manage().window().maximize();
-
-        driver.findElement(By.xpath("//button[@id='disagree-btn']/span")).click();
-        Thread.sleep(500);
-
         driver.findElement(By.linkText("Prijavi se")).click();
         Thread.sleep(500);
 
@@ -337,12 +309,6 @@ public class UserAuthenticationTest {
 
     @Test
     public void testLoginWithInvalidCredentials() throws InterruptedException {
-        driver.get(baseUrl);
-        driver.manage().window().maximize();
-
-        driver.findElement(By.xpath("//button[@id='disagree-btn']/span")).click();
-        Thread.sleep(500);
-
         driver.findElement(By.linkText("Prijavi se")).click();
         Thread.sleep(500);
 
