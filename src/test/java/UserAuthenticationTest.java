@@ -301,7 +301,7 @@ public class UserAuthenticationTest {
         Thread.sleep(500);
 
         driver.findElement(By.xpath("//div[@id='__layout']/div/div[2]/div[2]/div/button")).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         WebElement accountName = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/header/div/div[1]/div[1]/div[2]/div[2]/a/p"));
         assertEquals("FarisKarkelja", accountName.getText(), "Names aren't equal!");
