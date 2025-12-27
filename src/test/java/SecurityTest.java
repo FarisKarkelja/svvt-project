@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,5 +54,12 @@ public class SecurityTest {
         assertNotNull(olxSession, "olx_api_session should exist");
         assertTrue(olxSession.isHttpOnly(), "olx_api_session should be HttpOnly");
         assertTrue(olxSession.isSecure(), "olx_api_session should be Secure");
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
