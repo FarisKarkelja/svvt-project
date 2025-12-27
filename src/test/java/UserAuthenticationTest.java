@@ -14,7 +14,6 @@ public class UserAuthenticationTest {
 
     @BeforeAll
     public static void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Korisnik\\OneDrive\\Desktop\\ibu\\svvt\\chromedriver-win64\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
@@ -303,7 +302,7 @@ public class UserAuthenticationTest {
         driver.findElement(By.xpath("//div[@id='__layout']/div/div[2]/div[2]/div/button")).click();
         Thread.sleep(2000);
 
-        WebElement accountName = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/header/div/div[1]/div[1]/div[2]/div[2]/a/p"));
+        WebElement accountName = driver.findElement(By.cssSelector("a[href='/profil/FarisKarkelja/aktivni']"));
         assertEquals("FarisKarkelja", accountName.getText(), "Names aren't equal!");
     }
 
