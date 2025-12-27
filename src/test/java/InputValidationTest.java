@@ -55,7 +55,6 @@ public class InputValidationTest {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
         } catch (ElementClickInterceptedException e) {
-            System.out.println("CATHC ALIJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", submitButton);
         }
 
