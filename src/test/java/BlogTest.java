@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,6 +14,7 @@ import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BlogTest {
     static WebDriver driver;
@@ -78,5 +80,24 @@ public class BlogTest {
                 By.cssSelector(".eltd-related-post")
         );
         assertFalse(elements.isEmpty());
+    }
+
+    @Test
+    public void testPagination() {
+        driver.get("https://blog.olx.ba");
+
+        WebElement lastPage = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div/div[1]/div/div[3]/ul/li[7]/a")
+        ));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", lastPage);
+        lastPage.click();
+
+        WebElement currentPage = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div/div[1]/div/div[3]/ul/li[6]/span")
+        ));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", currentPage);
+
+        assertTrue(Integer.parseInt(currentPage.getText())>1);
+
     }
 }
