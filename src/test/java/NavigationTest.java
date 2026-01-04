@@ -158,40 +158,6 @@ public class NavigationTest {
         Thread.sleep(1000);
     }
 
-    @Test
-    public void testHamburgerMenuLinks() throws InterruptedException {
-        driver.manage().window().setSize(new Dimension(430, 932));
-        Thread.sleep(1000);
-
-        driver.findElement(By.xpath("//div[@id='__layout']/div/div[3]/div/div/a[5]/p")).click();
-        Thread.sleep(1000);
-
-        driver.findElement(By.name("username")).click();
-        Thread.sleep(1000);
-
-        driver.findElement(By.name("username")).clear();
-        Thread.sleep(1000);
-
-        driver.findElement(By.name("username")).sendKeys("fkarkelja149@gmail.com");
-        Thread.sleep(1000);
-
-        driver.findElement(By.name("password")).click();
-        Thread.sleep(1000);
-
-        driver.findElement(By.name("password")).clear();
-        Thread.sleep(1000);
-
-        driver.findElement(By.name("password")).sendKeys("Faris!2004");
-        Thread.sleep(1000);
-
-        driver.findElement(By.xpath("//div[@id='__layout']/div/div[2]/div[2]/div/button/div/p")).click();
-
-        Thread.sleep(3000);
-
-        //To be continued...
-    }
-
-
     @AfterAll
     public static void tearDown() {
         if (driver != null) {

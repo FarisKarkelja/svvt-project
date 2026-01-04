@@ -84,8 +84,8 @@ public class SearchFunctionalityTest {
 
         WebElement kilometres = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/div[4]/div/div[3]/div/main/div[1]/a/div/div[2]/div[2]/div[2]/div/span[2]/div"));
         String numeric = kilometres.getText().replaceAll("[^0-9]", "");
-        int priceValue = Integer.parseInt(numeric);
-        assertTrue(priceValue <= 20000);
+        int kmValue = Integer.parseInt(numeric);
+        assertTrue(kmValue <= 20000);
     }
 
     @AfterAll
